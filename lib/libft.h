@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/02 17:24:03 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/03 14:31:43 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int				ft_strlen(char *str);
 // Listes chainées
 t_list			*ft_lst_add_back(t_list *list, int newelem);
 t_list			*ft_lst_add_front(t_list *list, int newelem);
+t_list			*ft_lst_pop_front(t_list *list);
+void			ft_lst_free(t_list *list);
 int				ft_lst_length(t_list *list);
 void			ft_lst_print(t_list *list);
 

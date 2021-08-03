@@ -5,6 +5,8 @@ SRCS	=	./lib/ft_calloc.c\
 			./lib/ft_itoa.c\
 			./lib/ft_lst_add_back.c\
 			./lib/ft_lst_add_front.c\
+			./lib/ft_lst_pop_front.c\
+			./lib/ft_lst_free.c\
 			./lib/ft_lst_length.c\
 			./lib/ft_lst_print.c\
 			./lib/ft_memset.c\
@@ -14,11 +16,11 @@ SRCS	=	./lib/ft_calloc.c\
 			./lib/ft_split.c\
 			./lib/ft_strlcpy.c\
 			./lib/ft_strlen.c\
-			./srcs/push_swap.c\
+			./srcs/push_swap.c
 
 CC		=	gcc
 
-CFLAGS		=	-Werror -Wextra -Wall -fsanitize=address
+CFLAGS		=	-Werror -Wextra -Wall -fsanitize=address -g
 
 DEL			=	rm -f
 

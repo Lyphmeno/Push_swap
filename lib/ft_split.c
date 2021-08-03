@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 16:06:53 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/02 16:15:53 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/03 15:27:23 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**ft_split(const char *str, char c)
 	if (!str)
 		return (NULL);
 	nb_words = nbr_of_words(str, c);
-	tab = (char **)ft_calloc(sizeof(char *), nb_words + 1);
+	tab = (char **)ft_newarray(sizeof(char *), nb_words + 1, sizeof(char *));
 	while (i < nb_words)
 	{
 		while (str[j] == c && str[j])

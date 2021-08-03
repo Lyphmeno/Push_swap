@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lst_pop_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 12:37:36 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/03 18:31:21 by hlevi            ###   ########.fr       */
+/*   Created: 2021/08/03 14:25:04 by hlevi             #+#    #+#             */
+/*   Updated: 2021/08/03 16:03:44 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+t_list	*ft_lst_pop_front(t_list *list)
 {
-	void	*mem;
+	t_list	*element;
 
-	mem = malloc(count * size);
-	if (mem == NULL)
-		exit(ft_putstr_fd("Error\nMalloc failed\n", 0));
-	return (ft_memset(mem, 0, count * size));
+	if (list == NULL)
+		return (list);
+	element = list->next;
+	free(list);
+	return (element);
 }

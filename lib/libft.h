@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/03 14:31:43 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/06 16:59:33 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_list
 // Lib Basics
 int				ft_atoi(const char *s);
 void			*ft_calloc(size_t count, size_t size);
+void			ft_exit_code(char	*str, int x);
+int				ft_is_digit_char(char *str);
 char			*ft_itoa(int n);
 void			*ft_memset(void *b, int c, size_t len);
 void			**ft_newarray(size_t w, size_t h, size_t size);

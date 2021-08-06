@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_is_digit_char.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 12:37:36 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/06 15:43:50 by hlevi            ###   ########.fr       */
+/*   Created: 2021/08/06 15:49:39 by hlevi             #+#    #+#             */
+/*   Updated: 2021/08/06 16:46:10 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	ft_is_digit_char(char *str)
 {
-	void	*mem;
+	int	i;
 
-	mem = malloc(count * size);
-	if (mem == NULL)
-		ft_exit_code("Error\nMalloc failed\n", 1);
-	return (ft_memset(mem, 0, count * size));
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i])
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
+		i++;
+	}
+	return (1);
 }

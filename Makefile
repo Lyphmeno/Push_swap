@@ -1,7 +1,9 @@
 NAME	=	push_swap
 
-SRCS	=	./lib/ft_calloc.c\
-			./lib/ft_atoi.c\
+SRCS	=	./lib/ft_atoi.c\
+			./lib/ft_calloc.c\
+			./lib/ft_exit_code.c\
+			./lib/ft_is_digit_char.c\
 			./lib/ft_itoa.c\
 			./lib/ft_lst_add_back.c\
 			./lib/ft_lst_add_front.c\

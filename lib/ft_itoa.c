@@ -6,45 +6,53 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 15:33:18 by hlevi             #+#    #+#             */
-/*   Updated: 2021/07/27 13:06:31 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/06 17:05:04 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_numbers(unsigned int n)
+static int	ft_negative(int n)
 {
-	int	counter;
-
-	if (n == 0)
+	if (n < 0)
 		return (1);
-	counter = 0;
-	while (n > 0)
+	return (0);
+}
+
+static int	ft_get_size(int n)
+{
+	int	i;
+
+	i = 1;
+	while (n >= 10)
 	{
-		n = n / 10;
-		counter++;
+		n /= 10;
+		i++;
 	}
-	return (counter);
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	int				i;
-	unsigned int	nb;
-	char			*s;
+	int		i;
+	int		nb;
+	int		size;
+	char	*str;
 
 	nb = n;
-	s = (char *)malloc((sizeof(char) * (ft_numbers(nb) + 1)));
-	if (s == NULL)
-		return (0);
-	i = ft_numbers(nb) - 1;
-	s[i + 1] = '\0';
-	while (nb >= 10)
+	if (nb < 0)
+		nb *= -1;
+	size = ft_get_size(nb);
+	i = size - 1;
+	if (ft_negative(n) == 1)
+		i = size;
+	str = (char *)ft_calloc(sizeof(char), (size + ft_negative(n) + 1));
+	while (i >= 0)
 	{
-		s[i] = nb % 10 + 48;
-		nb = nb / 10;
-		i--;
+		str[i--] = nb % 10 + '0';
+		nb /= 10;
 	}
-	s[i] = nb + 48;
-	return (s);
+	if (ft_negative(n) == 1)
+		str[0] = '-';
+	return (str);
 }

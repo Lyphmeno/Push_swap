@@ -7,6 +7,7 @@ SRCS	=	./lib/ft_atoi.c\
 			./lib/ft_itoa.c\
 			./lib/ft_lst_add_back.c\
 			./lib/ft_lst_add_front.c\
+			./lib/ft_lst_pop_any.c\
 			./lib/ft_lst_pop_front.c\
 			./lib/ft_lst_free.c\
 			./lib/ft_lst_length.c\
@@ -18,6 +19,8 @@ SRCS	=	./lib/ft_atoi.c\
 			./lib/ft_split.c\
 			./lib/ft_strlcpy.c\
 			./lib/ft_strlen.c\
+			./srcs/operations.c\
+			./srcs/parsing.c\
 			./srcs/push_swap.c
 
 CC		=	gcc

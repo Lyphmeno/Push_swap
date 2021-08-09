@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 14:30:19 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/03 16:03:58 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/09 15:53:35 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_lst_free(t_list *list)
 {
 	while (list != NULL)
-		list = ft_lst_pop_front(list);
+		ft_lst_pop_front(&list);
 }

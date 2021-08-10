@@ -1,25 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_pop_front.c                                 :+:      :+:    :+:   */
+/*   op_short.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 14:25:04 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/10 11:39:53 by hlevi            ###   ########.fr       */
+/*   Created: 2021/08/10 14:19:40 by hlevi             #+#    #+#             */
+/*   Updated: 2021/08/10 14:38:31 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../lib/libft.h"
 
-void	ft_lst_pop_front(t_list **list)
+void	sa(t_list **list)
 {
-	t_list	*tmp;
+	swap(*list);
+	ft_putstr_fd("sa\n", 0);
+}
 
-	if (list != NULL)
-	{
-		tmp = *list;
-		*list = (*list)->next;
-		free(tmp);
-	}
+void	sb(t_list **list)
+{
+	swap(*list);
+	ft_putstr_fd("sb\n", 0);
+}
+
+void	ra(t_list **list)
+{
+	rotate(list, 1);
+	ft_putstr_fd("ra\n", 0);
+}
+
+void	rb(t_list **list)
+{
+	rotate(list, 1);
+	ft_putstr_fd("rb\n", 0);
+}
+
+void	rr(t_list **alist, t_list **blist)
+{
+	rotate(alist, 1);
+	rotate(blist, 1);
+	ft_putstr_fd("rr\n", 0);
 }

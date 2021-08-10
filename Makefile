@@ -19,6 +19,8 @@ SRCS	=	./lib/ft_atoi.c\
 			./lib/ft_split.c\
 			./lib/ft_strlcpy.c\
 			./lib/ft_strlen.c\
+			./srcs/op_short.c\
+			./srcs/op_short2.c\
 			./srcs/operations.c\
 			./srcs/parsing.c\
 			./srcs/push_swap.c

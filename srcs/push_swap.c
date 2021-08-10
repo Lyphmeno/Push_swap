@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 13:10:59 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/09 16:01:13 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/10 14:37:05 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,23 @@ int	main(int argc, char **argv)
 	parsing_base(&alist, argc, argv);
 	check_dup(alist);
 	print_change(alist, blist);
-	swap(alist);
+	sa(&alist);
 	print_change(alist, blist);
-	push(&alist, &blist);
+	push(&blist, &alist, "pa\n");
 	print_change(alist, blist);
-	push(&blist, &alist);
+	push(&alist, &blist, "pb\n");
+	print_change(alist, blist);
+	push(&alist, &blist, "pb\n");
+	print_change(alist, blist);
+	push(&alist, &blist, "pb\n");
+	print_change(alist, blist);
+	ra(&alist);
+	print_change(alist, blist);
+	rb(&blist);
+	print_change(alist, blist);
+	rr(&alist, &blist);
+	print_change(alist, blist);
+	rrr(&alist, &blist);
 	print_change(alist, blist);
 	ft_lst_free(alist);
 	ft_lst_free(blist);

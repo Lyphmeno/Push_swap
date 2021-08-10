@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 13:38:10 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/09 15:11:06 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/10 14:39:11 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	parsing_str(char *str, t_list **alist)
 		if (ft_is_digit_char(tmp[i]) == 0)
 			ft_exit_code("Error\nNot a number\n", 1);
 		*alist = ft_lst_add_back(*alist, ft_atoi(tmp[i]));
-		printf("%s\n", tmp[i]);
 		i++;
 	}
 	i = 0;

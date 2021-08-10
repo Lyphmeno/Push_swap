@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/09 16:00:40 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/10 14:35:53 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,16 @@ void	parsing_str(char *str, t_list **alist);
 void	parsing_base(t_list **alist, int argc, char **argv);
 // Operations
 void	swap(t_list *list);
-void	push(t_list **srclist, t_list **dstlist);
+void	push(t_list **srclist, t_list **dstlist, char *str);
+void	rotate(t_list **list, int x);
+// Operations shortcut
+void	sa(t_list **list);
+void	sb(t_list **list);
+void	ra(t_list **list);
+void	rb(t_list **list);
+void	rr(t_list **alist, t_list **blist);
+void	rra(t_list **alist);
+void	rrb(t_list **list);
+void	rrr(t_list **alist, t_list **blist);
 
 #endif

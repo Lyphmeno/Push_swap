@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/10 14:35:53 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/11 15:23:05 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	ft_lst_free(t_list *list);
 int		ft_lst_length(t_list *list);
 void	ft_lst_print(t_list *list);
 // Parsing
+void	check_done(t_list *alist, t_list *blist);
+int		check_lst_sort(t_list *list);
 void	check_dup(t_list *alist);
 void	parsing_str(char *str, t_list **alist);
 void	parsing_base(t_list **alist, int argc, char **argv);

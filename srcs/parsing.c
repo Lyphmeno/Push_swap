@@ -6,11 +6,35 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 13:38:10 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/10 14:39:11 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/11 15:39:09 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
+
+void	check_done(t_list *alist, t_list *blist)
+{
+	if (check_lst_sort(alist) == 1 && (!blist))
+		ft_putstr_fd("list is in order\n", 0);
+	else
+		ft_putstr_fd("list isn't in order\n", 0);
+}
+
+int	check_lst_sort(t_list *list)
+{
+	t_list	*tmp;
+	int		tmpval;
+
+	tmp = list;
+	while (tmp->next != NULL)
+	{
+		tmpval = tmp->value;
+		tmp = tmp->next;
+		if (tmpval > tmp->value)
+			return (0);
+	}
+	return (1);
+}
 
 void	check_dup(t_list *alist)
 {

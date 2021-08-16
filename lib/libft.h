@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/16 17:12:19 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/16 19:21:50 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_lst_add_front(t_list **list, int newelem);
 void	ft_lst_pop_front(t_list **list);
 void	ft_lst_pop_any(t_list **list, int key);
 void	ft_lst_free(t_list *list);
+int		ft_lst_getn(t_list *list, int index);
 int		ft_lst_length(t_list *list);
 void	ft_lst_print(t_list *list);
 void	ft_lst_mid(t_list *list, t_data *data, int cmin, int cmax);
@@ -56,6 +57,7 @@ int		ft_lst_min(t_list *list);
 int		ft_lst_max(t_list *list);
 void	ft_lst_ex(t_list *list, t_data *data);
 // Parsing
+void	print_change(t_list *alist, t_list *blist);
 void	check_done(t_list *alist, t_list *blist);
 int		check_lst_sort(t_list *list);
 void	check_dup(t_list *alist);
@@ -74,5 +76,7 @@ void	rr(t_list **alist, t_list **blist);
 void	rra(t_list **alist);
 void	rrb(t_list **list);
 void	rrr(t_list **alist, t_list **blist);
-
+// Sort
+void	push_base(t_list **alist, t_list **blist);
+void	push_swap(t_list **alist, t_list **blist);
 #endif

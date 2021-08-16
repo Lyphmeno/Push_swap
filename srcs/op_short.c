@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:19:40 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/10 14:38:31 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/16 19:25:43 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	sb(t_list **list)
 
 void	ra(t_list **list)
 {
-	rotate(list, 1);
+	rotate(list, ft_lst_length(*list));
 	ft_putstr_fd("ra\n", 0);
 }
 
 void	rb(t_list **list)
 {
-	rotate(list, 1);
+	rotate(list, ft_lst_length(*list));
 	ft_putstr_fd("rb\n", 0);
 }
 

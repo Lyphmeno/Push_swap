@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_short2.c                                        :+:      :+:    :+:   */
+/*   ft_lst_getn.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 14:32:35 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/16 19:25:33 by hlevi            ###   ########.fr       */
+/*   Created: 2021/08/16 18:53:50 by hlevi             #+#    #+#             */
+/*   Updated: 2021/08/16 19:01:28 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/libft.h"
+#include "libft.h"
 
-void	rra(t_list **list)
+int	ft_lst_getn(t_list *list, int index)
 {
-	rotate(list, 1);
-	ft_putstr_fd("rra\n", 0);
-}
+	t_list	*tmp;
+	int		i;
 
-void	rrb(t_list **list)
-{
-	rotate(list, 1);
-	ft_putstr_fd("rrb\n", 0);
-}
-
-void	rrr(t_list **alist, t_list **blist)
-{
-	rotate(alist, ft_lst_length(*alist));
-	rotate(blist, ft_lst_length(*blist));
-	ft_putstr_fd("rrr\n", 0);
+	i = 0;
+	tmp = list;
+	while (tmp != NULL)
+	{
+		if (i == index)
+			return (tmp->value);
+		i++;
+		tmp = tmp->next;
+	}
+	return (0);
 }

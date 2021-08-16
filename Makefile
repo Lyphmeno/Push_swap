@@ -11,6 +11,7 @@ SRCS	=	./lib/ft_atoi.c\
 			./lib/ft_lst_pop_front.c\
 			./lib/ft_lst_ex.c\
 			./lib/ft_lst_free.c\
+			./lib/ft_lst_getn.c\
 			./lib/ft_lst_length.c\
 			./lib/ft_lst_print.c\
 			./lib/ft_memset.c\
@@ -24,7 +25,8 @@ SRCS	=	./lib/ft_atoi.c\
 			./srcs/op_short2.c\
 			./srcs/operations.c\
 			./srcs/parsing.c\
-			./srcs/push_swap.c
+			./srcs/push_swap.c\
+			./srcs/sort.c
 
 CC		=	gcc
 

@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 13:38:10 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/16 13:21:50 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/16 19:21:27 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	check_done(t_list *alist, t_list *blist)
 {
+	print_change(alist, blist);
 	if (check_lst_sort(alist) == 1 && (!blist))
 		ft_putstr_fd("list is in order\n", 0);
 	else

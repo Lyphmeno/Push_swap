@@ -9,6 +9,7 @@ SRCS	=	./lib/ft_atoi.c\
 			./lib/ft_lst_add_front.c\
 			./lib/ft_lst_pop_any.c\
 			./lib/ft_lst_pop_front.c\
+			./lib/ft_lst_ex.c\
 			./lib/ft_lst_free.c\
 			./lib/ft_lst_length.c\
 			./lib/ft_lst_print.c\

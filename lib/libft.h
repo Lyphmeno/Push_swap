@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/11 15:23:05 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/16 17:12:19 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct s_value
+typedef struct s_data
 {
-	int	count;
-}		t_value;
+	int	min;
+	int	max;
+	int	mid;
+}		t_data;
 
 // Lib Basics
 int		ft_atoi(const char *s);
@@ -49,6 +51,10 @@ void	ft_lst_pop_any(t_list **list, int key);
 void	ft_lst_free(t_list *list);
 int		ft_lst_length(t_list *list);
 void	ft_lst_print(t_list *list);
+void	ft_lst_mid(t_list *list, t_data *data, int cmin, int cmax);
+int		ft_lst_min(t_list *list);
+int		ft_lst_max(t_list *list);
+void	ft_lst_ex(t_list *list, t_data *data);
 // Parsing
 void	check_done(t_list *alist, t_list *blist);
 int		check_lst_sort(t_list *list);

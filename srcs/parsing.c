@@ -6,16 +6,16 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 13:38:10 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/16 19:21:27 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/17 17:29:41 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-void	check_done(t_list *alist, t_list *blist)
+void	check_done(t_data *data)
 {
-	print_change(alist, blist);
-	if (check_lst_sort(alist) == 1 && (!blist))
+	print_change(data);
+	if (check_lst_sort(data->alist) == 1 && (!data->blist))
 		ft_putstr_fd("list is in order\n", 0);
 	else
 		ft_putstr_fd("list isn't in order\n", 0);
@@ -54,7 +54,7 @@ void	check_dup(t_list *alist)
 	}
 }
 
-void	parsing_str(char *str, t_list **alist)
+void	parsing_str(char *str, t_data *data)
 {
 	int		i;
 	char	**tmp;
@@ -65,7 +65,7 @@ void	parsing_str(char *str, t_list **alist)
 	{
 		if (ft_is_digit_char(tmp[i]) == 0)
 			ft_exit_code("Error\nNot a number\n", 1);
-		*alist = ft_lst_add_back(*alist, ft_atoi(tmp[i]));
+		data->alist = ft_lst_add_back(data->alist, ft_atoi(tmp[i]));
 		i++;
 	}
 	i = 0;
@@ -74,7 +74,7 @@ void	parsing_str(char *str, t_list **alist)
 	free(tmp);
 }
 
-void	parsing_base(t_list **alist, int argc, char **argv)
+void	parsing_base(t_data *data, int argc, char **argv)
 {
 	int	i;
 
@@ -82,12 +82,12 @@ void	parsing_base(t_list **alist, int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_strlen(argv[i]) > 2)
-			parsing_str(argv[i], alist);
+			parsing_str(argv[i], data);
 		else
 		{
 			if (ft_is_digit_char(argv[i]) == 0)
 				ft_exit_code("Error\nNot a number\n", 1);
-			*alist = ft_lst_add_back(*alist, ft_atoi(argv[i]));
+			data->alist = ft_lst_add_back(data->alist, ft_atoi(argv[i]));
 		}
 		i++;
 	}

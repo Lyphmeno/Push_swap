@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/16 19:21:50 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/17 17:29:56 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ typedef struct s_list
 
 typedef struct s_data
 {
-	int	min;
-	int	max;
-	int	mid;
-}		t_data;
+	t_list	*alist;
+	t_list	*blist;
+	int		min;
+	int		max;
+	int		mid;
+}			t_data;
 
 // Lib Basics
 int		ft_atoi(const char *s);
@@ -57,26 +59,26 @@ int		ft_lst_min(t_list *list);
 int		ft_lst_max(t_list *list);
 void	ft_lst_ex(t_list *list, t_data *data);
 // Parsing
-void	print_change(t_list *alist, t_list *blist);
-void	check_done(t_list *alist, t_list *blist);
+void	print_change(t_data *data);
+void	check_done(t_data *data);
 int		check_lst_sort(t_list *list);
 void	check_dup(t_list *alist);
-void	parsing_str(char *str, t_list **alist);
-void	parsing_base(t_list **alist, int argc, char **argv);
+void	parsing_str(char *str, t_data *data);
+void	parsing_base(t_data *data, int argc, char **argv);
 // Operations
 void	swap(t_list *list);
-void	push(t_list **srclist, t_list **dstlist, char *str);
+void	push(t_list *srclist, t_list *dstlist, char *str);
 void	rotate(t_list **list, int x);
 // Operations shortcut
-void	sa(t_list **list);
-void	sb(t_list **list);
-void	ra(t_list **list);
-void	rb(t_list **list);
-void	rr(t_list **alist, t_list **blist);
-void	rra(t_list **alist);
-void	rrb(t_list **list);
-void	rrr(t_list **alist, t_list **blist);
+void	sa(t_data *data);
+void	sb(t_data *data);
+void	ra(t_data *data);
+void	rb(t_data *data);
+void	rr(t_data *data);
+void	rra(t_data *data);
+void	rrb(t_data *data);
+void	rrr(t_data *data);
 // Sort
-void	push_base(t_list **alist, t_list **blist);
-void	push_swap(t_list **alist, t_list **blist);
+void	push_base(t_data *data);
+void	push_swap_less(t_data *data);
 #endif

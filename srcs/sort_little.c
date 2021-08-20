@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 11:53:05 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/20 13:51:36 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/20 21:45:47 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	solve_five(t_data *data)
 	while (ft_lst_length(data->alist) > 3)
 		push(&data->alist, &data->blist, "pb\n");
 	get_three(data);
-	print_change(data);
 	while (data->blist)
 	{
 		ft_lst_ex(data->alist, data);
@@ -60,7 +59,7 @@ void	solve_five(t_data *data)
 		while (data->pvup != 0 && data->pvdown
 			!= (ft_lst_length(data->alist) - 1))
 		{
-			if (data->pvup > (ft_lst_length(data->alist) / 2))
+			if (data->pvup > ft_lst_length(data->alist) / 2)
 				rra(data);
 			else
 				ra(data);
@@ -68,7 +67,6 @@ void	solve_five(t_data *data)
 			data->pvdown = ft_lst_geti(data->alist, data->vdown);
 		}
 		push(&data->blist, &data->alist, "pa\n");
-		print_change(data);
 	}
 	re_order(data);
 }

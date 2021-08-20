@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 12:09:32 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/20 12:34:02 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/20 21:45:46 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_lst_vup(t_data *data)
 			res = atmp->value;
 		atmp = atmp->next;
 	}
+	if (res < bvalue)
+		res = ft_lst_min(data->alist);
 	return (res);
 }
 
@@ -45,5 +47,7 @@ int	ft_lst_vdown(t_data *data)
 			res = atmp->value;
 		atmp = atmp->next;
 	}
+	if (res > bvalue)
+		res = ft_lst_max(data->alist);
 	return (res);
 }

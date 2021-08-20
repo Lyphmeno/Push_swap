@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/17 17:29:56 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/20 13:51:20 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ typedef struct s_data
 	int		min;
 	int		max;
 	int		mid;
+	int		pmin;
+	int		pmax;
+	int		pmid;
+	int		vup;
+	int		vdown;
+	int		pvup;
+	int		pvdown;
 }			t_data;
 
 // Lib Basics
@@ -51,6 +58,7 @@ void	ft_lst_add_front(t_list **list, int newelem);
 void	ft_lst_pop_front(t_list **list);
 void	ft_lst_pop_any(t_list **list, int key);
 void	ft_lst_free(t_list *list);
+int		ft_lst_geti(t_list *list, int value);
 int		ft_lst_getn(t_list *list, int index);
 int		ft_lst_length(t_list *list);
 void	ft_lst_print(t_list *list);
@@ -58,16 +66,18 @@ void	ft_lst_mid(t_list *list, t_data *data, int cmin, int cmax);
 int		ft_lst_min(t_list *list);
 int		ft_lst_max(t_list *list);
 void	ft_lst_ex(t_list *list, t_data *data);
+int		ft_lst_vup(t_data *data);
+int		ft_lst_vdown(t_data *data);
 // Parsing
 void	print_change(t_data *data);
-void	check_done(t_data *data);
+int		check_done(t_data *data);
 int		check_lst_sort(t_list *list);
 void	check_dup(t_list *alist);
 void	parsing_str(char *str, t_data *data);
 void	parsing_base(t_data *data, int argc, char **argv);
 // Operations
 void	swap(t_list *list);
-void	push(t_list *srclist, t_list *dstlist, char *str);
+void	push(t_list **srclist, t_list **dstlist, char *str);
 void	rotate(t_list **list, int x);
 // Operations shortcut
 void	sa(t_data *data);
@@ -80,5 +90,10 @@ void	rrb(t_data *data);
 void	rrr(t_data *data);
 // Sort
 void	push_base(t_data *data);
-void	push_swap_less(t_data *data);
+void	re_order(t_data *data);
+// five or less
+void	push_three(t_data *data, int a, int b, int c);
+void	get_three(t_data *data);
+void	solve_five(t_data *data);
+// Rest
 #endif

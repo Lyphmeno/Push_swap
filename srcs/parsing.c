@@ -6,19 +6,18 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 13:38:10 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/17 17:29:41 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/20 12:13:48 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-void	check_done(t_data *data)
+int	check_done(t_data *data)
 {
-	print_change(data);
 	if (check_lst_sort(data->alist) == 1 && (!data->blist))
-		ft_putstr_fd("list is in order\n", 0);
+		return (0);
 	else
-		ft_putstr_fd("list isn't in order\n", 0);
+		return (1);
 }
 
 int	check_lst_sort(t_list *list)
@@ -47,7 +46,7 @@ void	check_dup(t_list *alist)
 		while (tmplist != NULL)
 		{
 			if (tmplist->value == alist->value)
-				ft_exit_code("Error\nDuplicates in the list\n", 1);
+				ft_exit_code("Error\n", 2);
 			tmplist = tmplist->next;
 		}
 		alist = alist->next;
@@ -64,7 +63,7 @@ void	parsing_str(char *str, t_data *data)
 	while (tmp[i] != NULL)
 	{
 		if (ft_is_digit_char(tmp[i]) == 0)
-			ft_exit_code("Error\nNot a number\n", 1);
+			ft_exit_code("Error\n", 2);
 		data->alist = ft_lst_add_back(data->alist, ft_atoi(tmp[i]));
 		i++;
 	}
@@ -86,7 +85,7 @@ void	parsing_base(t_data *data, int argc, char **argv)
 		else
 		{
 			if (ft_is_digit_char(argv[i]) == 0)
-				ft_exit_code("Error\nNot a number\n", 1);
+				ft_exit_code("Error\n", 2);
 			data->alist = ft_lst_add_back(data->alist, ft_atoi(argv[i]));
 		}
 		i++;

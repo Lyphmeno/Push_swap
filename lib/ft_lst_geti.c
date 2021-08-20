@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_digit_char.c                                 :+:      :+:    :+:   */
+/*   ft_lst_geti.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 15:49:39 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/19 13:48:49 by hlevi            ###   ########.fr       */
+/*   Created: 2021/08/18 16:27:25 by hlevi             #+#    #+#             */
+/*   Updated: 2021/08/19 13:49:01 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_is_digit_char(char *str)
+int	ft_lst_geti(t_list *list, int value)
 {
-	int	i;
-	int	tmp;
+	t_list	*tmp;
+	int		i;
 
+	tmp = list;
 	i = 0;
-	tmp = 0;
-	if (str[i] == '+' || str[i] == '-')
+	while (tmp != NULL)
 	{
+		if (tmp->value == value)
+			return (i);
 		i++;
-		tmp++;
+		tmp = tmp->next;
 	}
-	while (str[i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (0);
-		i++;
-	}
-	if (i == 1 && tmp == 1)
-		return (0);
-	return (1);
+	return (0);
 }

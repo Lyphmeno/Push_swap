@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 18:32:31 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/20 21:10:07 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/21 14:57:23 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void	push_base(t_data *data)
 			sa(data);
 		if (ft_lst_length(data->alist) == 3)
 			get_three(data);
-		if (ft_lst_length(data->alist) > 3)
+		if (ft_lst_length(data->alist) > 3 && ft_lst_length(data->alist) < 30)
 			solve_five(data);
+		if (ft_lst_length(data->alist) > 29 && ft_lst_length(data->alist) < 500)
+			get_chunks(data, 20);
 	}
 }

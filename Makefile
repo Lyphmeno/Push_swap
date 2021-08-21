@@ -28,12 +28,13 @@ SRCS	=	./lib/ft_atoi.c\
 			./srcs/operations.c\
 			./srcs/parsing.c\
 			./srcs/push_swap.c\
+			./srcs/sort_big.c\
 			./srcs/sort_little.c\
 			./srcs/sort.c
 
 CC		=	gcc
 
-CFLAGS		=	-Werror -Wextra -Wall
+CFLAGS		=	-Werror -Wextra -Wall -fsanitize=address
 
 DEL			=	rm -f
 

@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/20 20:49:48 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/21 15:55:52 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 	int		vdown;
 	int		pvup;
 	int		pvdown;
+	int		**chunks;
 }			t_data;
 
 // Lib Basics
@@ -91,9 +92,10 @@ void	rrr(t_data *data);
 // Sort
 void	push_base(t_data *data);
 void	re_order(t_data *data);
-// five or less
+// Less then a hundred
 void	push_three(t_data *data, int a, int b, int c);
 void	get_three(t_data *data);
 void	solve_five(t_data *data);
-// Rest
+// Bigger list
+void	get_chunks(t_data *data, int size);
 #endif

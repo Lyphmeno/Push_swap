@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 13:38:10 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/20 12:13:48 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/21 14:11:22 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_dup(t_list *alist)
 		while (tmplist != NULL)
 		{
 			if (tmplist->value == alist->value)
-				ft_exit_code("Error\n", 2);
+				ft_exit_code("Error\n", 1);
 			tmplist = tmplist->next;
 		}
 		alist = alist->next;
@@ -63,7 +63,7 @@ void	parsing_str(char *str, t_data *data)
 	while (tmp[i] != NULL)
 	{
 		if (ft_is_digit_char(tmp[i]) == 0)
-			ft_exit_code("Error\n", 2);
+			ft_exit_code("Error\n", 1);
 		data->alist = ft_lst_add_back(data->alist, ft_atoi(tmp[i]));
 		i++;
 	}
@@ -85,7 +85,7 @@ void	parsing_base(t_data *data, int argc, char **argv)
 		else
 		{
 			if (ft_is_digit_char(argv[i]) == 0)
-				ft_exit_code("Error\n", 2);
+				ft_exit_code("Error\n", 1);
 			data->alist = ft_lst_add_back(data->alist, ft_atoi(argv[i]));
 		}
 		i++;

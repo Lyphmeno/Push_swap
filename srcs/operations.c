@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 15:06:39 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/18 16:54:41 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/21 13:52:47 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	push(t_list **srclist, t_list **dstlist, char *str)
 	{
 		ft_lst_add_front(dstlist, (*srclist)->value);
 		ft_lst_pop_front(srclist);
-		ft_putstr_fd(str, 0);
+		ft_putstr_fd(str, 1);
 	}
 }
 

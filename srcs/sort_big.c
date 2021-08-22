@@ -6,13 +6,13 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 14:42:34 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/22 15:10:51 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/22 16:08:26 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-int		is_in_chunk(t_data *data, int value)
+int	is_in_chunk(t_data *data, int value)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ int		is_in_chunk(t_data *data, int value)
 
 void	find_first(t_data *data)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = data->alist;
 	while (tmp != NULL)
@@ -37,7 +37,7 @@ void	find_first(t_data *data)
 		{
 			data->hfirst = tmp->value;
 			data->phfirst = ft_lst_geti(data->alist, data->hfirst);
-			break;
+			break ;
 		}
 		tmp = tmp->next;
 	}
@@ -46,7 +46,7 @@ void	find_first(t_data *data)
 
 void	find_last(t_data *data)
 {
-	t_list *tmp;
+	t_list	*tmp;
 	int		count;
 
 	tmp = data->alist;
@@ -78,8 +78,6 @@ void	to_pushb(t_data *data)
 		data->vup = ft_lst_vbdown(data);
 		data->pvup = ft_lst_geti(data->blist, data->vup);
 		data->pvdown = ft_lst_geti(data->blist, data->vdown);
-		// printf("%d < %d < %d\n", data->vdown, data->alist->value, data->vup);
-		// printf("%d - %d\n", data->pvdown, data->pvup);
 		while (data->pvup != 0 && data->pvdown
 			!= (ft_lst_length(data->blist) - 1))
 		{
@@ -97,6 +95,7 @@ void	to_pushb(t_data *data)
 void	solve_big(t_data *data, int size)
 {
 	int	tmp;
+
 	data->size = size;
 	get_chunks(data, data->size);
 	while (data->alist)
@@ -108,12 +107,8 @@ void	solve_big(t_data *data, int size)
 			data->ncount = 0;
 			tmp = data->ccount;
 		}
-		// printf("ccount = %d | ncount = %d\n", data->ccount, data->ncount);
 		find_first(data);
 		find_last(data);
-		// printf("hfirst = %d (%d)\n", data->hfirst, data->phfirst);
-		// printf("hlast = %d (%d)\n", data->hlast, data->phlast);
-		// printf("mh = %d | ml = %d\n", data->mfirst, data->mlast);
 		if (data->mfirst < data->mlast || data->mfirst == data->mlast)
 			while (ft_lst_geti(data->alist, data->hfirst) != 0)
 				ra(data);
@@ -121,10 +116,6 @@ void	solve_big(t_data *data, int size)
 			while (ft_lst_geti(data->alist, data->hlast) != 0)
 				rra(data);
 		to_pushb(data);
-		// print_change(data);
 	}
-	while (ft_lst_geti(data->blist, ft_lst_max(data->blist)) != 0)
-		rrb(data);
-	while (data->blist)
-		push(&data->blist, &data->alist, "pa\n");
+	end_algo(data);
 }

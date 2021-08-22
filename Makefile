@@ -35,7 +35,7 @@ SRCS	=	./lib/ft_atoi.c\
 
 CC		=	gcc
 
-CFLAGS		=	-Werror -Wextra -Wall -fsanitize=address
+CFLAGS		=	-Werror -Wextra -Wall
 
 DEL			=	rm -f
 

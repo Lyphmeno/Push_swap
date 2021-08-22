@@ -6,117 +6,125 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 14:42:34 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/21 17:12:44 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/22 15:10:51 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-int	find_newmin(t_list *list, int low) // MARCHE
-{
-	int		i;
-	t_list	*tmp;
-
-	tmp = list;
-	i = ft_lst_max(tmp);
-	while (tmp != NULL)
-	{
-		if (i > tmp->value && tmp->value > low)
-			i = tmp->value;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
-void	print_2Darray(int **array, int i, int size) // MARCHE
-{
-	int	j;
-	int	k;
-
-	j = 0;
-	k = 0;
-	while (j < i)
-	{
-		printf("%d - ", j);
-		while (k < size)
-		{
-			printf("|%d", array[j][k]);
-			k++;
-		}
-		k = 0;
-		printf("|\n");
-		j++;
-	}
-}
-
-void	fill_chunks(t_data *data, int i, int size) // FAKE
-{
-	int	low;
-	int	j;
-	int	k;
-	int	count;
-
-	j = 0;
-	k = 0;
-	count = 1;
-	low = ft_lst_min(data->alist);
-	data->chunks[j][k] = low;
-	k = 1;
-	printf("/%d", low);
-	while (j < i && count < ft_lst_length(data->alist))
-	{
-		while (k < size && count < ft_lst_length(data->alist))
-		{
-			low = find_newmin(data->alist, low);
-			//printf("/%d", low);
-			data->chunks[j][k] = low;
-			printf("[%d,%d]=%d\n", j, k, data->chunks[j][k]);
-			k++;
-			count++;
-		}
-		k = 0;
-		printf("\n");
-		j++;
-	}
-	k = ft_lst_length(data->alist) % size;
-	if (k < size && count >= ft_lst_length(data->alist))
-	{
-		while (k < size)
-		{
-			printf("k = %d|%d\n", j, k);
-			data->chunks[j - 1][k] = 0;
-			k++;
-		}
-	}
-	print_2Darray(data->chunks, i, size);
-}
-
-void	last_check_chunks(t_data *data, int i, int size) // FUK
-{
-	int	j;
-	int	k;
-
-	k = 0;
-	j = data->chunks[i - 1][0];
-	printf("j = %d\n", j);
-	while (k < size)
-	{
-		if (data->chunks[i - 1][k] < j)
-			data->chunks[i - 1][k] = '\0';
-		k++;
-	}
-}
-
-void	get_chunks(t_data *data, int size) // MARCHE
+int		is_in_chunk(t_data *data, int value)
 {
 	int	i;
 
-	i = ft_lst_length(data->alist) / size;
-	if (ft_lst_length(data->alist) % size != 0)
+	i = 0;
+	while (i < data->size)
+	{
+		if (data->chunks[data->ccount][i] == value)
+			return (1);
 		i++;
-	data->chunks = (int **)ft_newarray(i, size, sizeof(int));
-	fill_chunks(data, i, size);
-	//last_check_chunks(data, i, size);
-	printf("\n%d = %d (%d)\n", ft_lst_length(data->alist), i, size);
-	//print_2Darray(data->chunks, i, size);
+	}
+	return (0);
+}
+
+void	find_first(t_data *data)
+{
+	t_list *tmp;
+
+	tmp = data->alist;
+	while (tmp != NULL)
+	{
+		if (is_in_chunk(data, tmp->value) == 1)
+		{
+			data->hfirst = tmp->value;
+			data->phfirst = ft_lst_geti(data->alist, data->hfirst);
+			break;
+		}
+		tmp = tmp->next;
+	}
+	data->mfirst = data->phfirst;
+}
+
+void	find_last(t_data *data)
+{
+	t_list *tmp;
+	int		count;
+
+	tmp = data->alist;
+	count = 0;
+	while (tmp != NULL)
+	{
+		if (is_in_chunk(data, tmp->value) == 1)
+		{
+			if (count < data->size - data->ncount - 1)
+				count++;
+			else
+			{
+				data->hlast = tmp->value;
+				data->phlast = ft_lst_geti(data->alist, data->hlast);
+				data->ncount++;
+			}
+		}
+		tmp = tmp->next;
+	}
+	data->mlast = ft_lst_length(data->alist) - data->phlast;
+}
+
+void	to_pushb(t_data *data)
+{
+	if (ft_lst_length(data->blist) > 1)
+	{
+		ft_lst_ex(data->blist, data);
+		data->vdown = ft_lst_vbup(data);
+		data->vup = ft_lst_vbdown(data);
+		data->pvup = ft_lst_geti(data->blist, data->vup);
+		data->pvdown = ft_lst_geti(data->blist, data->vdown);
+		// printf("%d < %d < %d\n", data->vdown, data->alist->value, data->vup);
+		// printf("%d - %d\n", data->pvdown, data->pvup);
+		while (data->pvup != 0 && data->pvdown
+			!= (ft_lst_length(data->blist) - 1))
+		{
+			if (data->pvup > ft_lst_length(data->blist) / 2)
+				rrb(data);
+			else
+				rb(data);
+			data->pvup = ft_lst_geti(data->blist, data->vup);
+			data->pvdown = ft_lst_geti(data->blist, data->vdown);
+		}
+	}
+	push(&data->alist, &data->blist, "pb\n");
+}
+
+void	solve_big(t_data *data, int size)
+{
+	int	tmp;
+	data->size = size;
+	get_chunks(data, data->size);
+	while (data->alist)
+	{
+		tmp = data->ccount;
+		data->ccount = ft_lst_length(data->blist) / size;
+		if (data->ccount != tmp)
+		{
+			data->ncount = 0;
+			tmp = data->ccount;
+		}
+		// printf("ccount = %d | ncount = %d\n", data->ccount, data->ncount);
+		find_first(data);
+		find_last(data);
+		// printf("hfirst = %d (%d)\n", data->hfirst, data->phfirst);
+		// printf("hlast = %d (%d)\n", data->hlast, data->phlast);
+		// printf("mh = %d | ml = %d\n", data->mfirst, data->mlast);
+		if (data->mfirst < data->mlast || data->mfirst == data->mlast)
+			while (ft_lst_geti(data->alist, data->hfirst) != 0)
+				ra(data);
+		else
+			while (ft_lst_geti(data->alist, data->hlast) != 0)
+				rra(data);
+		to_pushb(data);
+		// print_change(data);
+	}
+	while (ft_lst_geti(data->blist, ft_lst_max(data->blist)) != 0)
+		rrb(data);
+	while (data->blist)
+		push(&data->blist, &data->alist, "pa\n");
 }

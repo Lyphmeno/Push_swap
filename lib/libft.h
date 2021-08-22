@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/21 15:55:52 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/22 14:44:08 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ typedef struct s_data
 	int		pvup;
 	int		pvdown;
 	int		**chunks;
+	int		hfirst;
+	int		hlast;
+	int		phlast;
+	int		phfirst;
+	int		mfirst;
+	int		mlast;
+	int		ccount;
+	int		ncount;
+	int		size;
 }			t_data;
 
 // Lib Basics
@@ -69,6 +78,8 @@ int		ft_lst_max(t_list *list);
 void	ft_lst_ex(t_list *list, t_data *data);
 int		ft_lst_vup(t_data *data);
 int		ft_lst_vdown(t_data *data);
+int		ft_lst_vbup(t_data *data);
+int		ft_lst_vbdown(t_data *data);
 // Parsing
 void	print_change(t_data *data);
 int		check_done(t_data *data);
@@ -96,6 +107,11 @@ void	re_order(t_data *data);
 void	push_three(t_data *data, int a, int b, int c);
 void	get_three(t_data *data);
 void	solve_five(t_data *data);
-// Bigger list
+// Chunks
 void	get_chunks(t_data *data, int size);
+void	fill_chunks(t_data *data, int i, int size);
+void	fill_last_chunk(t_data *data, int i, int size);
+int		find_newmin(t_list *list, int low);
+// More than a hundred
+void	solve_big(t_data *data, int size);
 #endif

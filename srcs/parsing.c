@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 13:38:10 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/24 13:09:44 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/26 16:21:46 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	parsing_str(char *str, t_data *data)
 	tmp = ft_split(str, ' ');
 	while (tmp[i] != NULL)
 	{
+		ft_atoi(tmp[i], data);
 		if (ft_is_digit_char(tmp[i]) == 0 || data->res == 1)
 		{
 			i = 0;

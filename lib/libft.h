@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:36:58 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/22 16:24:32 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/24 13:03:35 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ typedef struct s_data
 	int		ccount;
 	int		ncount;
 	int		size;
+	int		res;
 }			t_data;
 
 // Lib Basics
-int		ft_atoi(const char *s);
+int		ft_atoi(const char *str, t_data *data);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_exit_code(char	*str, int x);
 int		ft_is_digit_char(char *str);
@@ -62,6 +63,7 @@ int		ft_putstr_fd(char *str, int fd);
 char	**ft_split(const char *str, char c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strlen(char *str);
+void	free_int(t_data *data);
 // Listes chainées
 t_list	*ft_lst_add_back(t_list *list, int newelem);
 void	ft_lst_add_front(t_list **list, int newelem);

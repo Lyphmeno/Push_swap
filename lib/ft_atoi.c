@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 16:02:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/19 13:39:01 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/24 13:05:22 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *s)
+int	ft_atoi(const char *s, t_data *data)
 {
 	int		i;
 	long	x;
-	int		sign;
+	long	sign;
 
 	i = 0;
 	x = 0;
@@ -41,7 +41,8 @@ int	ft_atoi(const char *s)
 		x = 10 * x + s[i] - '0';
 		i++;
 	}
+	x *= sign;
 	if (x > 2147483647 || x < -2147483648)
-		ft_exit_code("Error\n", 2);
-	return (x * sign);
+		data->res = 1;
+	return (x);
 }

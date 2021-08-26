@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 13:38:10 by hlevi             #+#    #+#             */
-/*   Updated: 2021/08/22 16:29:31 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/08/24 13:09:44 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_dup(t_list *alist, t_data *data)
 		{
 			if (tmplist->value == alist->value)
 			{
-				ft_lst_free(alist);
+				ft_lst_free(data->alist);
 				free(data);
 				ft_exit_code("Error\n", 1);
 			}
@@ -66,7 +66,7 @@ void	parsing_str(char *str, t_data *data)
 	tmp = ft_split(str, ' ');
 	while (tmp[i] != NULL)
 	{
-		if (ft_is_digit_char(tmp[i]) == 0)
+		if (ft_is_digit_char(tmp[i]) == 0 || data->res == 1)
 		{
 			i = 0;
 			while (tmp[i] != NULL)
@@ -76,7 +76,7 @@ void	parsing_str(char *str, t_data *data)
 			free(data);
 			ft_exit_code("Error\n", 1);
 		}
-		data->alist = ft_lst_add_back(data->alist, ft_atoi(tmp[i]));
+		data->alist = ft_lst_add_back(data->alist, ft_atoi(tmp[i], data));
 		i++;
 	}
 	i = 0;
@@ -96,13 +96,13 @@ void	parsing_base(t_data *data, int argc, char **argv)
 			parsing_str(argv[i], data);
 		else
 		{
-			if (ft_is_digit_char(argv[i]) == 0)
+			if (ft_is_digit_char(argv[i]) == 0 || data->res == 1)
 			{
 				ft_lst_free(data->alist);
 				free(data);
 				ft_exit_code("Error\n", 1);
 			}
-			data->alist = ft_lst_add_back(data->alist, ft_atoi(argv[i]));
+			data->alist = ft_lst_add_back(data->alist, ft_atoi(argv[i], data));
 		}
 		i++;
 	}

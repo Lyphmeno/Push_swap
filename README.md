@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h1>Push Swap : <a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/cljbd5ceo007308mltneinai5/project/2264516" alt="hlevi's 42 push_swap Score" /></a></h1>
+  <h1>Push Swap :</a></h1>
 
   <h2>Project Description</h2>
   <p>Push Swap is a program that sorts a stack of numbers in ascending order using a set of predefined operations.</p>
